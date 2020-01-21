@@ -14,6 +14,7 @@ import no.hvl.dat110.messaging.MessagingServer;
 
 public class TestMessaging {
 
+	// TODO: test should fail if exceptions are raised during the test
 	@Test
 	public void test() {
 
