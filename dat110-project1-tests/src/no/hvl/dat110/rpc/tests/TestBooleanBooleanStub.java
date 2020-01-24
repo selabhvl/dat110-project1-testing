@@ -11,7 +11,7 @@ public class TestBooleanBooleanStub extends RPCStub {
 		
 		byte[] request = RPCUtils.marshallBoolean(RPCID,b);
 		
-		byte[] reply = rmiclient.call(request);
+		byte[] reply = rpcclient.call(request);
 		
 		boolean bres = RPCUtils.unmarshallBoolean(reply);
 		

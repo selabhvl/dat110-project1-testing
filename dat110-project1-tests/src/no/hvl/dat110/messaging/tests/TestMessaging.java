@@ -14,79 +14,96 @@ import no.hvl.dat110.messaging.MessagingServer;
 
 public class TestMessaging {
 
-	// TODO: test should fail if exceptions are raised during the test
+	private boolean failure;
+
 	@Test
 	public void test() {
 
 		byte[] clientsent = { 1, 2, 3, 4, 5 };
 
 		Thread server = new Thread() {
-	
+
 			public void run() {
 
-				System.out.println("Messaging server - start");
-				
-				MessagingServer server = 
-						new MessagingServer(MessageConfig.MESSAGINGPORT);
+				try {
+					System.out.println("Messaging server - start");
 
-				Connection connection = server.accept();
+					MessagingServer server = new MessagingServer(MessageConfig.MESSAGINGPORT);
 
-				Message request = connection.receive();
+					Connection connection = server.accept();
 
-				byte[] serverreceived = request.getData();
+					Message request = connection.receive();
 
-				Message reply = new Message(serverreceived);
+					byte[] serverreceived = request.getData();
 
-				connection.send(reply);
+					Message reply = new Message(serverreceived);
 
-				connection.close();
+					connection.send(reply);
 
-				server.stop();
+					connection.close();
 
-				System.out.println("Messaging server - stop");
+					server.stop();
 
-				assertTrue(Arrays.equals(clientsent, serverreceived));
+					System.out.println("Messaging server - stop");
 
+					assertTrue(Arrays.equals(clientsent, serverreceived));
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					failure = true;
+				}
 
 			}
 		};
 
 		Thread client = new Thread() {
-			
+
 			public void run() {
 
-				System.out.println("Messaging client - start");
+				try {
 
-				MessagingClient client = 
-						new MessagingClient(MessageConfig.MESSAGINGHOST, MessageConfig.MESSAGINGPORT);
+					System.out.println("Messaging client - start");
 
-				Connection connection = client.connect();
+					MessagingClient client = new MessagingClient(MessageConfig.MESSAGINGHOST,
+							MessageConfig.MESSAGINGPORT);
 
-				Message message1 = new Message(clientsent);
+					Connection connection = client.connect();
 
-				connection.send(message1);
+					Message message1 = new Message(clientsent);
 
-				Message message2 = connection.receive();
+					connection.send(message1);
 
-			    byte[] clientreceived = message2.getData();
+					Message message2 = connection.receive();
 
-				connection.close();
+					byte[] clientreceived = message2.getData();
 
-				System.out.println("Messaging client - stop");
+					connection.close();
 
-				assertTrue(Arrays.equals(clientsent, clientreceived));
+					System.out.println("Messaging client - stop");
+
+					assertTrue(Arrays.equals(clientsent, clientreceived));
+				} catch (Exception e) {
+					e.printStackTrace();
+					failure = true;
+				}
 			}
 
 		};
 
-		server.start();
-		client.start();
-
 		try {
+			server.start();
+			client.start();
+
 			server.join();
 			client.join();
+
 		} catch (Exception e) {
 			e.printStackTrace();
+			failure = true;
+		} finally {
+			if (failure) {
+				fail();
+			}
 		}
 
 	}

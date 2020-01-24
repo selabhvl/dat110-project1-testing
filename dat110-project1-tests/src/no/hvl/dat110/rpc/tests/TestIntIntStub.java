@@ -11,7 +11,7 @@ public class TestIntIntStub extends RPCStub {
 				
 		byte[] request = RPCUtils.marshallInteger(RPCID,x);
 		
-		byte[] reply = rmiclient.call(request);
+		byte[] reply = rpcclient.call(request);
 		
 		int xres = RPCUtils.unmarshallInteger(reply);
 		

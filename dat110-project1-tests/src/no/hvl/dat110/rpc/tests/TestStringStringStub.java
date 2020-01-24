@@ -9,7 +9,7 @@ public class TestStringStringStub extends RPCStub {
 		
 		byte[] request = RPCUtils.marshallString((byte)2,str);
 		
-		byte[] reply = rmiclient.call(request);
+		byte[] reply = rpcclient.call(request);
 		
 		String strres = RPCUtils.unmarshallString(reply);
 		

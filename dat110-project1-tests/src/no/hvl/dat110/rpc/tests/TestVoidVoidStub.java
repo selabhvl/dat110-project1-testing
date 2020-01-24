@@ -9,7 +9,7 @@ public class TestVoidVoidStub extends RPCStub {
 		
 		byte[] request = RPCUtils.marshallVoid((byte)1);
 		
-		byte[] reply = rmiclient.call(request);
+		byte[] reply = rpcclient.call(request);
 		
 		RPCUtils.unmarshallVoid(reply);
 		
