@@ -7,44 +7,44 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import no.hvl.dat110.messaging.Message;
-import no.hvl.dat110.messaging.MessageConfig;
+import no.hvl.dat110.messaging.MessageUtils;
 
 class TestMessage {
 
-	private byte[] createPayload (int size) {
+	private byte[] createData (int size) {
 	
-		byte[] payload = new byte[size];
+		byte[] data = new byte[size];
 		
-		for (int i = 0; i<payload.length;i++) {
-			payload[i] = (byte)i;
+		for (int i = 0; i<data.length;i++) {
+			data[i] = (byte)i;
 		}
 		
-		return payload;
+		return data;
 	}
 	
 	@Test
 	void testEncapsulate() {
 		
 		int size = 56;
-		byte[] payload = createPayload(size);
+		byte[] data = createData(size);
 		
-		Message message = new Message(payload);
+		Message message = new Message(data);
 		
-		byte[] encoded = message.encapsulate();
+		byte[] encoded = MessageUtils.encapsulate(message);
 		
 		assertEquals(size,encoded[0]);
 		
-		assertEquals(MessageConfig.SEGMENTSIZE,encoded.length);
+		assertEquals(MessageUtils.SEGMENTSIZE,encoded.length);
 		
-		for (int i = 0; i<payload.length;i++) {
-			assertEquals(payload[i],encoded[i+1]);
+		for (int i = 0; i<data.length;i++) {
+			assertEquals(data[i],encoded[i+1]);
 		}
 	}
 		
 	@Test
 	void testDecapsulate() {
 		
-		byte[] encoded = new byte[MessageConfig.SEGMENTSIZE];
+		byte[] encoded = new byte[MessageUtils.SEGMENTSIZE];
 		
 		encoded[0] = 5;
 		encoded[1] = 1;
@@ -53,37 +53,33 @@ class TestMessage {
 		encoded[4] = 4;
 		encoded[5] = 5;
 		
-		Message message = new Message();
+		Message message = MessageUtils.decapsulate(encoded);
 		
-		message.decapsulate(encoded);
+		byte[] data = message.getData();
 		
-		byte[] payload = message.getData();
-		
-		assertEquals(5,payload.length);
+		assertEquals(5,data.length);
 		
 		for (int i = 0;i<5;i++) {
-			assertEquals(encoded[i+1],payload[i]);
+			assertEquals(encoded[i+1],data[i]);
 		}
 	}
 
 	@Test
 	void EncapsulateDecapsulate () {
 	
-		for (int size = 0;size<MessageConfig.SEGMENTSIZE-1;size++) {
+		for (int size = 0;size <= MessageUtils.SEGMENTSIZE-1;size++) {
 			
-			byte[] payload = createPayload(size);
+			byte[] data = createData(size);
 			
-			Message message1 = new Message(payload);
+			Message message1 = new Message(data);
 			
-			byte[] encoded = message1.encapsulate();
+			byte[] encoded = MessageUtils.encapsulate(message1);
 			
-			Message message2 = new Message();
-			
-			message2.decapsulate(encoded);
+			Message message2 = MessageUtils.decapsulate(encoded);
 			
 			byte[] decoded = message2.getData();
 			
-			assertTrue(Arrays.equals(payload, decoded));
+			assertTrue(Arrays.equals(data, decoded));
 		}
 		
 	}	

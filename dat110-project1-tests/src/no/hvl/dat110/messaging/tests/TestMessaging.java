@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import no.hvl.dat110.messaging.Connection;
 import no.hvl.dat110.messaging.Message;
-import no.hvl.dat110.messaging.MessageConfig;
+import no.hvl.dat110.messaging.MessageUtils;
 import no.hvl.dat110.messaging.MessagingClient;
 import no.hvl.dat110.messaging.MessagingServer;
 
@@ -28,7 +28,7 @@ public class TestMessaging {
 				try {
 					System.out.println("Messaging server - start");
 
-					MessagingServer server = new MessagingServer(MessageConfig.MESSAGINGPORT);
+					MessagingServer server = new MessagingServer(MessageUtils.MESSAGINGPORT);
 
 					Connection connection = server.accept();
 
@@ -64,8 +64,8 @@ public class TestMessaging {
 
 					System.out.println("Messaging client - start");
 
-					MessagingClient client = new MessagingClient(MessageConfig.MESSAGINGHOST,
-							MessageConfig.MESSAGINGPORT);
+					MessagingClient client = new MessagingClient(MessageUtils.MESSAGINGHOST,
+							MessageUtils.MESSAGINGPORT);
 
 					Connection connection = client.connect();
 
