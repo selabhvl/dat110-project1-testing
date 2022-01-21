@@ -35,9 +35,7 @@ public class TestRPC {
 
 				client.connect();
 
-				RPCClientStopStub stub = new RPCClientStopStub();
-
-				client.register(stub);
+				RPCClientStopStub stub = new RPCClientStopStub(client);
 
 				stub.stop();
 
@@ -89,11 +87,8 @@ public class TestRPC {
 
 				client.connect();
 
-				RPCClientStopStub stopstub = new RPCClientStopStub();
-				TestVoidVoidStub voidvoidstub = new TestVoidVoidStub();
-
-				client.register(stopstub);
-				client.register(voidvoidstub);
+				RPCClientStopStub stopstub = new RPCClientStopStub(client);
+				TestVoidVoidStub voidvoidstub = new TestVoidVoidStub(client);
 
 				// void test case
 				voidvoidstub.m();
@@ -149,11 +144,8 @@ public class TestRPC {
 
 				client.connect();
 
-				RPCClientStopStub stopstub = new RPCClientStopStub();
-				TestStringStringStub stringstringstub = new TestStringStringStub();
-
-				client.register(stopstub);
-				client.register(stringstringstub);
+				RPCClientStopStub stopstub = new RPCClientStopStub(client);
+				TestStringStringStub stringstringstub = new TestStringStringStub(client);
 
 				// string test case
 				String teststr = "string";
@@ -211,11 +203,8 @@ public class TestRPC {
 
 				client.connect();
 
-				RPCClientStopStub stopstub = new RPCClientStopStub();
-				TestIntIntStub intintstub = new TestIntIntStub();
-
-				client.register(stopstub);
-				client.register(intintstub);
+				RPCClientStopStub stopstub = new RPCClientStopStub(client);
+				TestIntIntStub intintstub = new TestIntIntStub(client);
 
 				// int test case
 				int x = 42;
@@ -273,11 +262,8 @@ public class TestRPC {
 
 				client.connect();
 
-				RPCClientStopStub stopstub = new RPCClientStopStub();
-				TestBooleanBooleanStub boolboolstub = new TestBooleanBooleanStub();
-
-				client.register(stopstub);
-				client.register(boolboolstub);
+				RPCClientStopStub stopstub = new RPCClientStopStub(client);
+				TestBooleanBooleanStub boolboolstub = new TestBooleanBooleanStub(client);
 
 				// boolean test case
 
@@ -346,17 +332,11 @@ public class TestRPC {
 
 				client.connect();
 
-				RPCClientStopStub stopstub = new RPCClientStopStub();
-				TestVoidVoidStub voidvoidstub = new TestVoidVoidStub();
-				TestStringStringStub stringstringstub = new TestStringStringStub();
-				TestIntIntStub intintstub = new TestIntIntStub();
-				TestBooleanBooleanStub boolboolstub = new TestBooleanBooleanStub();
-
-				client.register(stopstub);
-				client.register(voidvoidstub);
-				client.register(stringstringstub);
-				client.register(intintstub);
-				client.register(boolboolstub);
+				RPCClientStopStub stopstub = new RPCClientStopStub(client);
+				TestVoidVoidStub voidvoidstub = new TestVoidVoidStub(client);
+				TestStringStringStub stringstringstub = new TestStringStringStub(client);
+				TestIntIntStub intintstub = new TestIntIntStub(client);
+				TestBooleanBooleanStub boolboolstub = new TestBooleanBooleanStub(client);
 
 				// void test case
 				voidvoidstub.m();
