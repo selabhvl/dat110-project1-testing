@@ -25,6 +25,14 @@ class TestSystem {
 
 		displaythread.start();
 		sensorthread.start();
+		
+		// let the servers start first
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		controllerthread.start();
 
 		try {
