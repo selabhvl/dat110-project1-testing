@@ -1,9 +1,9 @@
 package no.hvl.dat110.rpc.tests;
 
-import no.hvl.dat110.rpc.RPCImpl;
+import no.hvl.dat110.rpc.RPCRemoteImpl;
 import no.hvl.dat110.rpc.RPCUtils;
 
-public class TestIntIntImpl implements RPCImpl {
+public class TestIntIntImpl implements RPCRemoteImpl {
 
 	public byte[] invoke(byte[] request) {
 		
@@ -11,7 +11,7 @@ public class TestIntIntImpl implements RPCImpl {
 		
 		int resx = m(x);
 		
-		byte[] reply = RPCUtils.marshallInteger(request[0],resx);
+		byte[] reply = RPCUtils.marshallInteger(resx);
 		
 		return reply;
 	}

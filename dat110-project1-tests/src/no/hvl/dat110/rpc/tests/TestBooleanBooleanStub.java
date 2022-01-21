@@ -1,17 +1,15 @@
 package no.hvl.dat110.rpc.tests;
 
-import no.hvl.dat110.rpc.RPCStub;
+import no.hvl.dat110.rpc.RPCLocalStub;
 import no.hvl.dat110.rpc.RPCUtils;
 
-public class TestBooleanBooleanStub extends RPCStub {
-
-	private byte RPCID = 4;
+public class TestBooleanBooleanStub extends RPCLocalStub {
 	
 	public boolean m(boolean b) {
 		
-		byte[] request = RPCUtils.marshallBoolean(RPCID,b);
+		byte[] request = RPCUtils.marshallBoolean(b);
 		
-		byte[] reply = rpcclient.call(request);
+		byte[] reply = rpcclient.call(4,request);
 		
 		boolean bres = RPCUtils.unmarshallBoolean(reply);
 		

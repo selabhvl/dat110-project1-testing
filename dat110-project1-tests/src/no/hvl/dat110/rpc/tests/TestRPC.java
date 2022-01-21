@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import no.hvl.dat110.rpc.RPCClient;
 import no.hvl.dat110.rpc.RPCServer;
-import no.hvl.dat110.rpc.RPCServerStopStub;
+import no.hvl.dat110.rpc.RPCClientStopStub;
 
 public class TestRPC {
 
@@ -35,7 +35,7 @@ public class TestRPC {
 
 				client.connect();
 
-				RPCServerStopStub stub = new RPCServerStopStub();
+				RPCClientStopStub stub = new RPCClientStopStub();
 
 				client.register(stub);
 
@@ -89,7 +89,7 @@ public class TestRPC {
 
 				client.connect();
 
-				RPCServerStopStub stopstub = new RPCServerStopStub();
+				RPCClientStopStub stopstub = new RPCClientStopStub();
 				TestVoidVoidStub voidvoidstub = new TestVoidVoidStub();
 
 				client.register(stopstub);
@@ -149,7 +149,7 @@ public class TestRPC {
 
 				client.connect();
 
-				RPCServerStopStub stopstub = new RPCServerStopStub();
+				RPCClientStopStub stopstub = new RPCClientStopStub();
 				TestStringStringStub stringstringstub = new TestStringStringStub();
 
 				client.register(stopstub);
@@ -211,7 +211,7 @@ public class TestRPC {
 
 				client.connect();
 
-				RPCServerStopStub stopstub = new RPCServerStopStub();
+				RPCClientStopStub stopstub = new RPCClientStopStub();
 				TestIntIntStub intintstub = new TestIntIntStub();
 
 				client.register(stopstub);
@@ -273,7 +273,7 @@ public class TestRPC {
 
 				client.connect();
 
-				RPCServerStopStub stopstub = new RPCServerStopStub();
+				RPCClientStopStub stopstub = new RPCClientStopStub();
 				TestBooleanBooleanStub boolboolstub = new TestBooleanBooleanStub();
 
 				client.register(stopstub);
@@ -346,7 +346,7 @@ public class TestRPC {
 
 				client.connect();
 
-				RPCServerStopStub stopstub = new RPCServerStopStub();
+				RPCClientStopStub stopstub = new RPCClientStopStub();
 				TestVoidVoidStub voidvoidstub = new TestVoidVoidStub();
 				TestStringStringStub stringstringstub = new TestStringStringStub();
 				TestIntIntStub intintstub = new TestIntIntStub();

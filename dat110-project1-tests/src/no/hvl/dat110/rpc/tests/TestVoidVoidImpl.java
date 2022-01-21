@@ -1,9 +1,9 @@
 package no.hvl.dat110.rpc.tests;
 
-import no.hvl.dat110.rpc.RPCImpl;
+import no.hvl.dat110.rpc.RPCRemoteImpl;
 import no.hvl.dat110.rpc.RPCUtils;
 
-public class TestVoidVoidImpl implements RPCImpl {
+public class TestVoidVoidImpl implements RPCRemoteImpl {
 
 	public void m() {
 		System.out.println("void m() executed");
@@ -15,7 +15,7 @@ public class TestVoidVoidImpl implements RPCImpl {
 		
 		m();
 		
-		byte[] reply = RPCUtils.marshallVoid(request[0]);
+		byte[] reply = RPCUtils.marshallVoid();
 		
 		return reply;
 	}

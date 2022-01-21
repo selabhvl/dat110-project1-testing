@@ -1,9 +1,9 @@
 package no.hvl.dat110.rpc.tests;
 
-import no.hvl.dat110.rpc.RPCImpl;
+import no.hvl.dat110.rpc.RPCRemoteImpl;
 import no.hvl.dat110.rpc.RPCUtils;
 
-public class TestBooleanBooleanImpl implements RPCImpl {
+public class TestBooleanBooleanImpl implements RPCRemoteImpl {
 
 	public byte[] invoke(byte[] request) {
 
@@ -11,7 +11,7 @@ public class TestBooleanBooleanImpl implements RPCImpl {
 
 		boolean resb = m(b);
 
-		byte[] reply = RPCUtils.marshallBoolean(request[0], resb);
+		byte[] reply = RPCUtils.marshallBoolean(resb);
 
 		return reply;
 	}

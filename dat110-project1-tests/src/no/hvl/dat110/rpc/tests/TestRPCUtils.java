@@ -13,7 +13,7 @@ class TestRPCUtils {
 		
 		String str = "teststring";
 		
-		byte[] encoded = RPCUtils.marshallString((byte)0, str);
+		byte[] encoded = RPCUtils.marshallString(str);
 		String decoded = RPCUtils.unmarshallString(encoded);
 		
 		assertEquals(str,decoded);
@@ -24,7 +24,7 @@ class TestRPCUtils {
 		
 		int testint = 255;
 		
-		byte[] encoded = RPCUtils.marshallInteger((byte)0, testint);
+		byte[] encoded = RPCUtils.marshallInteger(testint);
 		int decoded = RPCUtils.unmarshallInteger(encoded);
 		
 		assertEquals(testint,decoded);
@@ -33,12 +33,12 @@ class TestRPCUtils {
 	@Test
 	void testMarshallBoolean( ) {
 		
-		byte[] encoded = RPCUtils.marshallBoolean((byte)0, true);
+		byte[] encoded = RPCUtils.marshallBoolean(true);
 		boolean decoded = RPCUtils.unmarshallBoolean(encoded);
 		
 		assertTrue(decoded);
 		
-		encoded = RPCUtils.marshallBoolean((byte)0, false);
+		encoded = RPCUtils.marshallBoolean(false);
 		decoded = RPCUtils.unmarshallBoolean(encoded);
 		
 		assertFalse(decoded);

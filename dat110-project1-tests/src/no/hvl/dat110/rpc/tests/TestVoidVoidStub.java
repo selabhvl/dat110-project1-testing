@@ -1,15 +1,15 @@
 package no.hvl.dat110.rpc.tests;
 
-import no.hvl.dat110.rpc.RPCStub;
+import no.hvl.dat110.rpc.RPCLocalStub;
 import no.hvl.dat110.rpc.RPCUtils;
 
-public class TestVoidVoidStub extends RPCStub {
+public class TestVoidVoidStub extends RPCLocalStub {
 
 	public void m() {
 		
-		byte[] request = RPCUtils.marshallVoid((byte)1);
+		byte[] request = RPCUtils.marshallVoid();
 		
-		byte[] reply = rpcclient.call(request);
+		byte[] reply = rpcclient.call(1,request);
 		
 		RPCUtils.unmarshallVoid(reply);
 		
