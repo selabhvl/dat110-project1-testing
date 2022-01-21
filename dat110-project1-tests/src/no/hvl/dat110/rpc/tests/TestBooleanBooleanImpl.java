@@ -2,9 +2,14 @@ package no.hvl.dat110.rpc.tests;
 
 import no.hvl.dat110.rpc.RPCRemoteImpl;
 import no.hvl.dat110.rpc.RPCUtils;
+import no.hvl.dat110.rpc.RPCServer;
 
-public class TestBooleanBooleanImpl implements RPCRemoteImpl {
+public class TestBooleanBooleanImpl extends RPCRemoteImpl {
 
+	public TestBooleanBooleanImpl(byte rpcid, RPCServer rpcserver) {
+		super(rpcid,rpcserver);
+	}
+	
 	public byte[] invoke(byte[] request) {
 
 		boolean b = RPCUtils.unmarshallBoolean(request);

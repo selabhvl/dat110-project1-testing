@@ -14,7 +14,7 @@ public class TestIntIntStub extends RPCLocalStub {
 				
 		byte[] request = RPCUtils.marshallInteger(x);
 		
-		byte[] reply = rpcclient.call(3,request);
+		byte[] reply = rpcclient.call((byte)3,request);
 		
 		int xres = RPCUtils.unmarshallInteger(reply);
 		

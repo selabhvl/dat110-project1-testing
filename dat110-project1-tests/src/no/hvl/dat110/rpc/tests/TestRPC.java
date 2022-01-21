@@ -71,9 +71,7 @@ public class TestRPC {
 
 			public void run() {
 
-				TestVoidVoidImpl voidvoidimpl = new TestVoidVoidImpl();
-
-				server.register(1, voidvoidimpl);
+				TestVoidVoidImpl voidvoidimpl = new TestVoidVoidImpl((byte)1,server);
 
 				server.run();
 
@@ -128,9 +126,7 @@ public class TestRPC {
 
 			public void run() {
 
-				TestStringStringImpl stringstringimpl = new TestStringStringImpl();
-
-				server.register(2, stringstringimpl);
+				TestStringStringImpl stringstringimpl = new TestStringStringImpl((byte)2,server);
 
 				server.run();
 
@@ -187,9 +183,7 @@ public class TestRPC {
 
 			public void run() {
 
-				TestIntIntImpl intintimpl = new TestIntIntImpl();
-
-				server.register(3, intintimpl);
+				TestIntIntImpl intintimpl = new TestIntIntImpl((byte)3,server);
 
 				server.run();
 
@@ -246,9 +240,7 @@ public class TestRPC {
 
 			public void run() {
 
-				TestBooleanBooleanImpl boolboolimpl = new TestBooleanBooleanImpl();
-
-				server.register(4, boolboolimpl);
+				TestBooleanBooleanImpl boolboolimpl = new TestBooleanBooleanImpl((byte)4,server);
 
 				server.run();
 
@@ -310,15 +302,10 @@ public class TestRPC {
 
 			public void run() {
 
-				TestVoidVoidImpl voidvoidimpl = new TestVoidVoidImpl();
-				TestStringStringImpl stringstringimpl = new TestStringStringImpl();
-				TestIntIntImpl intintimpl = new TestIntIntImpl();
-				TestBooleanBooleanImpl boolboolimpl = new TestBooleanBooleanImpl();
-
-				server.register(1, voidvoidimpl);
-				server.register(2, stringstringimpl);
-				server.register(3, intintimpl);
-				server.register(4, boolboolimpl);
+				TestVoidVoidImpl voidvoidimpl = new TestVoidVoidImpl((byte)1,server);
+				TestStringStringImpl stringstringimpl = new TestStringStringImpl((byte)2,server);
+				TestIntIntImpl intintimpl = new TestIntIntImpl((byte)3,server);
+				TestBooleanBooleanImpl boolboolimpl = new TestBooleanBooleanImpl((byte)4,server);
 
 				server.run();
 

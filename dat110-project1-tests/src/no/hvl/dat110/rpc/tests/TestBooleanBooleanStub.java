@@ -14,7 +14,7 @@ public class TestBooleanBooleanStub extends RPCLocalStub {
 		
 		byte[] request = RPCUtils.marshallBoolean(b);
 		
-		byte[] reply = rpcclient.call(4,request);
+		byte[] reply = rpcclient.call((byte)4,request);
 		
 		boolean bres = RPCUtils.unmarshallBoolean(reply);
 		

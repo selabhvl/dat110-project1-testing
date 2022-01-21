@@ -14,7 +14,7 @@ public class TestStringStringStub extends RPCLocalStub {
 		
 		byte[] request = RPCUtils.marshallString(str);
 		
-		byte[] reply = rpcclient.call(2,request);
+		byte[] reply = rpcclient.call((byte)2,request);
 		
 		String strres = RPCUtils.unmarshallString(reply);
 		
